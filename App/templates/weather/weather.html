@@ -1,0 +1,16 @@
+<form action="" method="post">{% csrf_token %}
+    {{form.name}} <br>
+    <input type="submit" value="Enter"><br>
+
+    {% if message %}
+    <div>{{message}}</div>
+    {% endif %}
+
+</form>
+<div>
+    {% for city in weather_data %}
+    {{city.name}}
+    {{city.description}}
+    <div ><a href="{% url 'delete' city.city %}"><button class="delete">Delete</button> </a></div>
+    {% endfor %}
+</div>
